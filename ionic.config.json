@@ -1,0 +1,7 @@
+{
+  "name": "bob-t",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

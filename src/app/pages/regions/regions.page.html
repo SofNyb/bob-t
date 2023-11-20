@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Regions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item *ngFor="let region of regions"
+              [routerLink]="['/list',  
+                            { Category: 'Region', 
+                              Criteria: region.ID, 
+                              Name: region.Name 
+                            } 
+      ]" routerDirection="forward"
+      [disabled]="region.Count==0">
+      <ion-icon name="{{region.Icon}}"
+                      slot="start"></ion-icon>
+      {{region.Name}}
+      <ion-badge slot="end">{{region.Count}}</ion-badge>
+    </ion-item>
+  </ion-list>
+</ion-content>

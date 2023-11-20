@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Tour Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        {{tourtype}} / {{region}}
+      </ion-card-subtitle>
+      <ion-card-title>
+        {{tour.Title}}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-img src="https://ionic.andreas-dormann.de/img/big/{{tour.Image}}"></ion-img>
+      <hr />
+      {{tour.Description}}
+      <hr />
+      <ion-grid no-padding>
+        <ion-row style="margin-left: -12px;">
+          <ion-col size-xs="12" size-md="auto">
+            <ion-chip>
+              <ion-icon name="stopwatch"></ion-icon>
+              <ion-label>{{tour.Duration}} min.</ion-label>
+            </ion-chip>
+          </ion-col>
+          <ion-col size-xs="12" size-md="auto">
+            <ion-chip>
+              <ion-label>Up to {{tour.MaxPersons}}</ion-label>
+              <ion-icon name="people"></ion-icon>
+            </ion-chip>
+          </ion-col>
+          <ion-col size-xs="12" size-md="auto">
+            <ion-chip>
+              <ion-icon name="language"></ion-icon>
+              <ion-label>{{tour.PriceG}} &euro; (German)</ion-label>
+            </ion-chip>
+          </ion-col>
+          <ion-col size-xs="12" size-md="auto">
+            <ion-chip>
+              <ion-icon name="globe"></ion-icon>
+              <ion-label>{{tour.PriceF}} &euro; (Other languages)</ion-label>
+            </ion-chip>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer class="ion-padding" style="height: 80px;">
+  <ion-button expand="block" (click)="presentActionSheet()"
+                            *ngIf="!showSocial">
+    Options
+  </ion-button>
+  <!--(FAB) share button-->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="toggleSocial()">
+    <ion-fab-button>
+      <ion-icon name="share-social"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="start">
+        <ion-fab-button (click)="openSocial('facebook')">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="openSocial('instagram')">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="openSocial('twitter')">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="openSocial('whatsapp')">
+          <ion-icon name="logo-whatsapp"></ion-icon>
+        </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-footer>
